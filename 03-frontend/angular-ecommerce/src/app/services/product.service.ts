@@ -9,12 +9,15 @@ import { Product } from '../common/product';
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/products?size=100';
+  private baseUrl = 'http://localhost:8080/api/products';
 
   constructor(private httpClient: HttpClient) { }
 
   // map the JSON data from Spring Data REST to Product array
-  getProductsList(): Observable<Product[]> {
+  getProductsList(theCategoryId: number): Observable<Product[]> {
+
+    // @TODO: need to build URL based on category id...... will come back to this !!
+
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response._embedded.products)
     );
