@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
 
     // the method is invoked once you subscribe
     // this.productService.getProductsList(this.currentCategoryId).subscribe(
-    this.productService.getProductsList(2).subscribe(
+    this.productService.getProductsList(this.currentCategoryId).subscribe(
       data => {
         this.products = data;
       }
