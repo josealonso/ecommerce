@@ -15,6 +15,16 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getProductsListPaginate(thePage: number,
+    thePageSize: number,
+    theCategoryId: number): Observable<GetResponseProducts> {
+
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
+      + `&page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
+
   // map the JSON data from Spring Data REST to Product array
   getProductsList(theCategoryId: number): Observable<Product[]> {
 
@@ -52,13 +62,15 @@ export class ProductService {
   }
 }
 
-interface GetResponseProduct {
-
-}
-
 interface GetResponseProducts {
   _embedded: {
     products: Product[];
+  },
+  page: {
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number,
   }
 }
 
