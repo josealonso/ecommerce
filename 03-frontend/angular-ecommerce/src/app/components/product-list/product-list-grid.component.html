@@ -37,7 +37,8 @@
 
                                 <!-- params of ngb-pagination component = properties of ProductListComponent -->
                                 <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                                    [collectionSize]="theTotalElements" (pageChange)="listProducts()">
+                                    [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
 
                                 </ngb-pagination>
 
@@ -47,9 +48,9 @@
                                 <span class="mr-2" style="padding-right: 0.5em;">Page Size</span>
                                 <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
                                     <option selected="true">5</option>
-                                    <option value="">10</option>
-                                    <option value="">20</option>
-                                    <option value="">50</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
                                 </select>
                             </div>
 
