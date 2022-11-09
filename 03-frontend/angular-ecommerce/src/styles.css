@@ -546,8 +546,9 @@ input.au-input.au-input-xl {
     background: #fff
 }
 
+/* top right bottom left */
 .main-content.page-m {
-    padding: 10% 15% !important
+    padding: 10% 30% 10% 5% 
 }
 
 /* 
