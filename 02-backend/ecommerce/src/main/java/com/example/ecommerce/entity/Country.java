@@ -1,5 +1,6 @@
 package com.example.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,5 +26,6 @@ public class Country {
 
     // one-to-many states relationship
     @OneToMany(mappedBy = "country")
+    @JsonIgnore     // jackson annotation
     private List<State> states;
 }
