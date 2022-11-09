@@ -13,7 +13,7 @@ export class MyShopFormService {
 
     let data: number[] = [];
 
-    for (let theMonth = startMonth; theMonth < 12; theMonth++) {
+    for (let theMonth = startMonth; theMonth <= 12; theMonth++) {
       data.push(theMonth);
     }
 
