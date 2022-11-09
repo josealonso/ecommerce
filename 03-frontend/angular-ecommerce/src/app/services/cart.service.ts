@@ -19,19 +19,15 @@ export class CartService {
   addToCart(theCartItem: CartItem) {
 
     let alreadyExistsInCart: boolean = false;
-    let nonProduct: Product = {
+    let nonCartItem: CartItem = {
       id: "-1",
-      sku: '',
       name: '',
-      description: '',
-      unitPrice: '',
       imageUrl: '',
-      active: '',
-      unitsInStock: '',
-      dateCreated: new Date(),
-      lastUpdated: new Date(),
+      unitPrice: 0,
+      quantity: 0
     };
-    let existingCartItem: CartItem = new CartItem(nonProduct);  //undefined;
+    let existingCartItem: CartItem = nonCartItem;  //undefined;
+    // let existingCartItem = this.cartItems.find(cartItem => cartItem.id === theCartItem.id);
 
     if (this.cartItems.length > 0) {
 
@@ -42,7 +38,7 @@ export class CartService {
         }
       }
 
-      alreadyExistsInCart = (existingCartItem.id != "-1");
+      alreadyExistsInCart = (existingCartItem != nonCartItem);
     }
 
     if (alreadyExistsInCart) {
