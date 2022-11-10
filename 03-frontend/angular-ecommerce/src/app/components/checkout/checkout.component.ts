@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
 import { MyShopFormService } from 'src/app/services/my-shop-form.service';
+import { notOnlyWhitespaceValidator } from 'src/app/validators/my-shop-validators';
 
 @Component({
   selector: 'app-checkout',
@@ -32,9 +33,13 @@ export class CheckoutComponent implements OnInit {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('',
-          [Validators.required, Validators.minLength(2)]),
+          [Validators.required,
+          Validators.minLength(2),
+          notOnlyWhitespaceValidator()]),
         lastName: new FormControl('',
-          [Validators.required, Validators.minLength(2)]),
+          [Validators.required,
+          Validators.minLength(2),
+          notOnlyWhitespaceValidator()]),
         email: new FormControl('',
           [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
       }),
