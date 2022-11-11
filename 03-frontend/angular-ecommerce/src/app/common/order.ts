@@ -1,4 +1,6 @@
-export interface Order {
-    totalQuantity: number;
-    totalPrice: number;
+export class Order {
+
+    constructor(public totalQuantity: number,
+        public totalPrice: number) { }
+
 }

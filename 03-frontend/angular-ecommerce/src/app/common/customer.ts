@@ -1,5 +1,6 @@
-export interface Customer {
-    firstName: string;
-    lastName: string;
-    email: string;
+export class Customer {
+
+    constructor(public firstName: string,
+        public lastName: string,
+        public email: string) { }
 }
