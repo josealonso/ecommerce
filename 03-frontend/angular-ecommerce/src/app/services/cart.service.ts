@@ -79,8 +79,7 @@ export class CartService {
     let totalQuantityValue: number = 0;
 
     for (let cartItem of this.cartItems) {
-      // let quantity = cartItem.quantity;
-      totalPriceValue += +cartItem.unitPrice * cartItem.quantity;
+      totalPriceValue += cartItem.unitPrice! * cartItem.quantity;
       totalQuantityValue += cartItem.quantity;
     }
 
@@ -95,7 +94,7 @@ export class CartService {
 
     console.log('Contents of the cart');
     for (let cartItem of this.cartItems) {
-      const subTotalPrice = cartItem.quantity * cartItem.unitPrice;
+      const subTotalPrice = cartItem.quantity * cartItem.unitPrice!;
       console.log(`name: ${cartItem.name}, quantity: ${cartItem.quantity}`);
       console.log(`unitPrice: ${cartItem.unitPrice}, subTotalPrice: ${subTotalPrice}`);
     }
