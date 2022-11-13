@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
 
+## Web Storage API
+
+The API works the same for **session storage** (shared across all the tabs and persistent) or **local storage** (one for each tab)
+
+- Key and value are always strings.
+- Store item ------> `storage.setItem(key, value)`
+- Retrieve item ---> `storage.getItem(key)`
+- Session storage ---> Once a web browser tab is closed then data is no longer available.
+- Local storage -----> data is persisted and survives browser restarts.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
