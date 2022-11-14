@@ -5,11 +5,13 @@ import com.example.ecommerce.dto.Purchase;
 import com.example.ecommerce.dto.PurchaseResponse;
 import com.example.ecommerce.entity.Customer;
 import com.example.ecommerce.entity.Order;
+import com.example.ecommerce.entity.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.UUID;
+import java.util.Set;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
@@ -31,7 +33,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         String orderTrackingNumber = generateOrderTrackingNumber();
         order.setOrderTrackingNumber(orderTrackingNumber);
         // populate order with orderItems
-        var orderItems = purchase.getOrderItems();
+        Set<OrderItem> orderItems = purchase.getOrderItems();
         orderItems.forEach(item -> order.add(item));
         // populate order with billingAddress and shippingAddress
         order.setBillingAddress(purchase.getBillingAddress());
