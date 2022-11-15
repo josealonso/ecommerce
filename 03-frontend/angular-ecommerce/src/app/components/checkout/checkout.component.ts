@@ -235,6 +235,8 @@ export class CheckoutComponent implements OnInit {
     this.paymentInfo.amount = this.totalPrice * 100;
     this.paymentInfo.currency = "USD";
 
+    console.log(`paymentInfo.amount: ${this.paymentInfo.amount}`);
+
     // if valid form
 
     if (!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
