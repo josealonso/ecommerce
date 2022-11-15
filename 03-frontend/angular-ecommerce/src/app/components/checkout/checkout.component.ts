@@ -235,6 +235,7 @@ export class CheckoutComponent implements OnInit {
     // compute payment info
     this.paymentInfo.amount = Math.round(this.totalPrice * 100);
     this.paymentInfo.currency = "USD";
+    this.paymentInfo.receiptEmail = purchase.customer.email;
 
     console.log(`paymentInfo.amount: ${this.paymentInfo.amount}`);
 
@@ -259,7 +260,7 @@ export class CheckoutComponent implements OnInit {
                     city: purchase.billingAddress.city,
                     state: purchase.billingAddress.state,
                     postal_code: purchase.billingAddress.zipCode,
-                    country: purchase.billingAddress.country 
+                    country: purchase.billingAddress.country
                   }
                 }
               }
