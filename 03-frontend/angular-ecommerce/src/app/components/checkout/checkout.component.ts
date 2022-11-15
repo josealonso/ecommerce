@@ -47,6 +47,7 @@ export class CheckoutComponent implements OnInit {
   paymentInfo: PaymentInfo = new PaymentInfo();
   cardElement: any;
   displayError: any = "";
+  isDisabled = false;
 
   constructor(private formBuilder: FormBuilder,
     private myShopFormService: MyShopFormService,
@@ -240,7 +241,10 @@ export class CheckoutComponent implements OnInit {
     // if valid form
 
     if (!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
-      this.checkoutService.createPaymentInfo(this.paymentInfo).subscribe(
+
+      this.isDisabled = true;
+
+      this.checkoutService.createPaymentIntent(this.paymentInfo).subscribe(
         (paymentIntentResponse) => {
           // Send credit card data to stripe.com servers
           this.stripe.confirmCardPayment(paymentIntentResponse.client_secret,
@@ -255,7 +259,7 @@ export class CheckoutComponent implements OnInit {
                     city: purchase.billingAddress.city,
                     state: purchase.billingAddress.state,
                     postal_code: purchase.billingAddress.zipCode,
-                    country: purchase.billingAddress.country
+                    country: purchase.billingAddress.country 
                   }
                 }
               }
@@ -263,17 +267,20 @@ export class CheckoutComponent implements OnInit {
             .then((result: any) => {
               if (result.error) {
                 alert(`There was an error: ${result.error.message}`);
+                this.isDisabled = false;
               } else {
                 // call REST API
                 this.checkoutService.placeOrder(purchase).subscribe({
                   next: (response: any) => {
                     alert(`Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`);
 
-                    // reset cart
                     this.resetCart();
+                    this.isDisabled = false;
+                    this.isDisabled = false;
                   },
                   error: (err: any) => {
                     alert(`There was an error: ${err.message}`);
+                    this.isDisabled = false;
                   }
                 })
               }
