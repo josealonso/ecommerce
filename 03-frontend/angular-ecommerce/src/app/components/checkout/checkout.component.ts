@@ -260,7 +260,7 @@ export class CheckoutComponent implements OnInit {
                     city: purchase.billingAddress.city,
                     state: purchase.billingAddress.state,
                     postal_code: purchase.billingAddress.zipCode,
-                    country: purchase.billingAddress.country
+                    country: this.billingAddressCountry?.value.code
                   }
                 }
               }
